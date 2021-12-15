@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dasboard</title>
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./node_modules/chart.js/dist/chart.js"></script>
+    <script src="../node_modules/chart.js/dist/chart.js"></script>
   </head>
   <body>
     <header class="cabecera">
@@ -24,9 +24,10 @@
           <option selected>Seleccione un Pais</option>
         </select>
       </div>
-      
+
       <div class="loader">
-        <div id="loader" class="lds-spinner">Cargando
+        <div id="loader" class="lds-spinner">
+          Cargando
           <div></div>
           <div></div>
           <div></div>
@@ -43,18 +44,21 @@
       </div>
 
       <div class="ventana1">
-        <canvas id="myChart1"></canvas>
+        <canvas id="myChart1">Grafico uno</canvas>
       </div>
       <div class="ventana2">
-        <canvas id="myChart2"></canvas>
+        <canvas id="myChart2">Grafico dos</canvas>
       </div>
       <div class="ventana3">
-        <canvas id="myChart3"></canvas>
+        <canvas id="myChart3">Grafico tres</canvas>
       </div>
-      <div class="ventana4">Texto</div>
+      <div id="resena" class="ventana4">
+        <h1>Datos del Pais</h1>
+        <ul id="lista-datos" class="lista"></ul>
+      </div>
     </section>
     <footer>Autor: Jesús Eugenio Ricardez de los Santos</footer>
 
-    <script src="./index.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

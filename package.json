@@ -9,6 +9,9 @@
   "author": "Jesus E Ricardez de los Santos",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^3.6.2"
-  }
+    "browser-sync": "^2.27.7",
+    "chart.js": "^3.6.2",
+    "toastr": "^2.1.4"
+  },
+  "devDependencies": {}
 }
