@@ -1,3 +1,6 @@
+let myChart1;
+let myChart2;
+let myChart3;
 function imprimirFecha() {
   today = new Date();
   var mes = today.getMonth() + 1;
@@ -60,7 +63,12 @@ fetch(cadenaDeBusqueda1)
         const dataArray = [nombres.All.dates];
 
         const ctx = document.getElementById("myChart1").getContext("2d");
-        const myChart1 = new Chart(ctx, {
+        
+        if (myChart1) {
+          myChart1.destroy();
+        }
+
+         myChart1 = new Chart(ctx, {
           type: "line",
           data: {
             labels: [],
@@ -90,8 +98,10 @@ fetch(cadenaDeBusqueda1)
         const dataArray = [nombres.All.dates];
        
         const ctx = document.getElementById("myChart2").getContext("2d");
-
-        const myChart2 = new Chart(ctx, {
+        if (myChart2) {
+          myChart2.destroy();
+        }
+        myChart2 = new Chart(ctx, {
           type: "line",
           data: {
             labels: [],
@@ -121,8 +131,10 @@ fetch(cadenaDeBusqueda1)
         console.log(elementos);
         const dataArray = [nombres.All.dates];
         const ctx = document.getElementById("myChart3").getContext("2d");
-
-        const myChart3 = new Chart(ctx, {
+        if (myChart3) {
+          myChart3.destroy();
+        }
+        myChart3 = new Chart(ctx, {
           type: "line",
           data: {
             labels: [],
@@ -146,14 +158,4 @@ fetch(cadenaDeBusqueda1)
         });})
        
         document.getElementById('loader').style.visibility = "hidden"; 
-    }
-
-    async function destruirChart1() {
-      await myChart1.destroy();
-    }
-    async function destruirChart2() {
-      await myChart2.destroy();
-    }
-    async function destruirChart3() {
-      await myChart3.destroy();
     }
