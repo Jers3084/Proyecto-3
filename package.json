@@ -1,0 +1,14 @@
+{
+  "name": "proyecto3",
+  "version": "1.0.0",
+  "description": "Proyecto 3 del Curso Webfullstack Ucamp UTEL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Jesus E Ricardez de los Santos",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.6.2"
+  }
+}

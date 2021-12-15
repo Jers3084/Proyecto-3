@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dasboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./node_modules/chart.js/dist/chart.js"></script>
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="item1">
+        <p class="titulo"><b>Estadisticas COVID-19</b></p>
+      </div>
+      <div class="item2" id="fechaYhora"></div>
+      <div class="item3"></div>
+    </header>
+    <section class="cuerpo">
+      <div class="menu">
+        Escoja un pais:
+        <br />
+        <select id="campos" class="selector" onchange="getPais()">
+          <option selected>Seleccione un Pais</option>
+        </select>
+      </div>
+      
+      <div class="loader">
+        <div id="loader" class="lds-spinner">Cargando
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="ventana1">
+        <canvas id="myChart1"></canvas>
+      </div>
+      <div class="ventana2">
+        <canvas id="myChart2"></canvas>
+      </div>
+      <div class="ventana3">
+        <canvas id="myChart3"></canvas>
+      </div>
+      <div class="ventana4">Texto</div>
+    </section>
+    <footer>Autor: Jesús Eugenio Ricardez de los Santos</footer>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
