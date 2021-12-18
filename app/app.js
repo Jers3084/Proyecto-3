@@ -19,9 +19,9 @@ window.onload = function () {
 cargarPaisesenSelector();
 
 function cargarPaisesenSelector() {
-const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
-const cadenaDeBusqueda1 = cadenaDeBusqueda+"&status=Confirmed"
-fetch(cadenaDeBusqueda1)
+  const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
+  const cadenaDeBusqueda1 = cadenaDeBusqueda+"&status=Confirmed"
+  fetch(cadenaDeBusqueda1)
   .then(response => response.json())
   .then(estadisticas => {
       const arregloPaises=[];
@@ -42,24 +42,23 @@ fetch(cadenaDeBusqueda1)
         );
     document.getElementById('loader').style.visibility = "hidden";    
     })
-    
-  } 
+    .catch(error => toastr["error"]("Error", error)); 
+} 
 
-    function getPais() {
-      document.getElementById('loader').style.visibility="initial";
-      var e = document.getElementById("campos");
-      var pais = e.value;
-      imprimirGraficos(pais);
-    }
+function getPais() {
+  document.getElementById('loader').style.visibility="visible";
+  var e = document.getElementById("campos");
+  var pais = e.value;
+  imprimirGraficos(pais);
+}
 
-    function imprimirGraficos(paisBuscado) {
-      console.log(paisBuscado);
-      const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
-      const cadenaDeBusqueda1 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Confirmed"
-      fetch(cadenaDeBusqueda1)
-        .then(response => response.json())
-        .then(nombres => {var elementos =(Object.keys(nombres.All.dates).length);
-        const dataArray = [nombres.All.dates];
+function imprimirGraficos(paisBuscado) {
+  
+  const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
+  const cadenaDeBusqueda1 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Confirmed"
+  fetch(cadenaDeBusqueda1)
+  .then(response => response.json())
+  .then(nombres => { const dataArray = [nombres.All.dates];
         var nombrePais = nombres.All.country;
         var poblacion = nombres.All.population;
         var vida = nombres.All.life_expectancy;
@@ -95,17 +94,22 @@ fetch(cadenaDeBusqueda1)
               },
             },
           },
-        });})
-        const cadenaDeBusqueda2 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Deaths"
-        fetch(cadenaDeBusqueda2)
-        .then(response => response.json())
-        .then(nombres => {var elementos =(Object.keys(nombres.All.dates).length);
-        const dataArray = [nombres.All.dates];
+        });
+    }
+    )
+    .catch(error => toastr["error"]("Error", error));
+    
+
+    const cadenaDeBusqueda2 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Deaths"
+      fetch(cadenaDeBusqueda2)
+      .then(response => response.json())
+      .then(nombres => { const dataArray = [nombres.All.dates];
        
         const ctx = document.getElementById("myChart2").getContext("2d");
         if (myChart2) {
           myChart2.destroy();
         }
+
         myChart2 = new Chart(ctx, {
           type: "line",
           data: {
@@ -127,54 +131,64 @@ fetch(cadenaDeBusqueda1)
               },
             },
           },
-        });})
+        });
+      })
+      .catch(error => toastr["error"]("Error", error));
         
-        const cadenaDeBusqueda3 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Recovered"
-        fetch(cadenaDeBusqueda3)
-        .then(response => response.json())
-        .then(nombres => {var elementos =(Object.keys(nombres.All.dates).length);
-        const dataArray = [nombres.All.dates];
+    const cadenaDeBusqueda3 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Recovered"
+      fetch(cadenaDeBusqueda3)
+      .then(response => response.json())
+      .then(nombres => { const dataArray = [nombres.All.dates];
+ 
         const ctx = document.getElementById("myChart3").getContext("2d");
         if (myChart3) {
           myChart3.destroy();
         }
+
         myChart3 = new Chart(ctx, {
           type: "line",
-          data: {
-            labels: [],
-            datasets: [
-              {
+            data: {
+              labels: [],
+                datasets: [
+                {
                 label: "# de Recuperados de COVID-19 "+paisBuscado,
                 data: dataArray[0],
                 backgroundColor: "rgba(75, 192, 192, 1)",
                 borderColor: 'rgb(75, 192, 192, 1)',
                 borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
+                },
+              ],
+            },
+            options: {
+              scales: {
               y: {
                 beginAtZero: true,
+                },
               },
             },
-          },
-        });})
-       
-        document.getElementById('loader').style.visibility = "hidden"; 
-    }
-
-    function imprimirDatosPais(nombrePais, poblacion, vida, localizacion, capital) {
-          var contenido;
-          var arrayDatos1 = [nombrePais, poblacion, vida, localizacion, capital];
-          var arrayDatos2 = ["Pais: ","Poblacion: ","Esperanza de Vida (años); ","Localizacion: ","Capital: "];
-          
-          for (var i=0; i<5; i++) {
-          var li = document.createElement("li");
-          var p = document.createElement("p");
-          contenido = arrayDatos2[i] + arrayDatos1[i];
-          p.appendChild(document.createTextNode(contenido));
-          document.querySelector("#lista-datos").appendChild(li).appendChild(p);
           }
+        );
+        
+        document.getElementById('loader').style.visibility = "hidden";
+      })
+      .catch(error => toastr["error"]("Error", error));
+}
 
-    }
+function imprimirDatosPais(nombrePais, poblacion, vida, localizacion, capital) {
+    const nodo = document.getElementById("lista-datos");
+      while (nodo.firstChild) {
+        nodo.removeChild(nodo.firstChild);
+      }    
+      var contenido;
+      var arrayDatos1 = [nombrePais, poblacion, vida, localizacion, capital];
+      var arrayDatos2 = ["Pais: ","Poblacion: ","Esperanza de Vida (años); ","Localizacion: ","Capital: "];
+          
+      for (var i=0; i<5; i++) {
+        var li = document.createElement("li");
+        var p = document.createElement("p");
+        contenido = arrayDatos2[i] + arrayDatos1[i];
+        p.appendChild(document.createTextNode(contenido));
+        document.querySelector("#lista-datos").appendChild(li).appendChild(p);
+      }
+
+}
