@@ -14,16 +14,13 @@ En el repositorio en GitHub  https://github.com/public-apis/public-apis se elegi
 
 las características a considerar fueron:
 
-Usar un ambiente de desarrollo con Node.js
 Utilizar Chart.js para el desarrollo de gráficas. Era posible utilizar una diferente.
 Realizar una conexión a una API externa para extraer datos. Opcionalmente, se podia utilizarla con una API KEY.
 
 Objetivos de aprendizaje
-Crear un ambiente de desarrollo con Node.js
 Conocer el funcionamiento de las APIs
 Aplicar procesos síncronos y asíncronos en JavaScript
 Requisitos y entregables
-Como principal requisito, este deberá realizarse en parejas (por motivos específicos, podría trabajarse individualmente).
 
 A continuación, usarás esta lista para saber los requisitos mínimos del proyecto:
 
