@@ -51,6 +51,11 @@ header .item3 {
   align-items: center;
 }
 
+.parrafo {
+  padding: 5px;
+  text-align: justify;
+}
+
 .loader {
   grid-row-start: 2;
   grid-row-end: 3;
