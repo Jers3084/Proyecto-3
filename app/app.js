@@ -1,31 +1,31 @@
-import {imprimirFecha, cargarPaisesenSelector, imprimirDatosPais} from "./funciones.js";
+import {imprimirFecha, cargarPaisesenSelector, imprimirDatosPais} from "./funciones.js"; //Importa funciones
 
 
-let myChart1;
+let myChart1; //inicializa variables
 let myChart2;
 let myChart3;
 
-
+//Imprime la fecha actual en la paguina
 window.onload = function () {
   imprimirFecha();
 };
 
-
+//Carga la lista de paises existentes en la API de Covid-19 en las opciones del campo de entrada Select
 cargarPaisesenSelector();
 
 
-
+//Ejecuta la busqueda de datos y la impresion de Graficas cuando se selecciona un pais del campo de entrada Select
 const selectElement = document.querySelector('.selector');
 selectElement.addEventListener('change', (event) => {
   document.getElementById('loader').style.visibility="visible";
   var e = document.getElementById("campos");
   var pais = e.value;
-  imprimirGraficos(pais);
+  imprimirGraficos(pais); //LLama funcion que consulta datos e imprime graficos
 });
 
 
 
-
+//Funcion que consulta los datos de la API e Imprime los datos en Graficas utilizando Chartjs
 async function imprimirGraficos(paisBuscado) {
   const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
   const cadenaDeBusqueda1 = cadenaDeBusqueda+"country="+paisBuscado+"&status=Confirmed"

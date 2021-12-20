@@ -1,3 +1,4 @@
+//Funcion que imprime la fecha actual en el encabezado de la pagina web
 export function imprimirFecha() {
   var today = new Date();
   var mes = today.getMonth() + 1;
@@ -9,6 +10,7 @@ export function imprimirFecha() {
   document.getElementById("fechaYhora").innerHTML = cadenaFechaYhora;
 };
 
+//Funcion que carga en las opciones del campo de entrada Select los paises de los cuales se cuenta con informacion estadistica de Covid-19 en la API
 export async function cargarPaisesenSelector() {
     const cadenaDeBusqueda = "https://covid-api.mmediagroup.fr/v1/history?"
     const cadenaDeBusqueda1 = cadenaDeBusqueda+"&status=Confirmed"
@@ -38,7 +40,7 @@ export async function cargarPaisesenSelector() {
       });
   }
   
-
+/*Con esta funcion se imprime en una de las secciones de la pagina web los datos del pais del cual se estan graficando los datos estadisticos de Covid-19 Nombre del Pais, Num de Pobladores, Localizacion, etc, */
 export function imprimirDatosPais(nombrePais, poblacion, vida, localizacion, capital) {
   const nodo = document.getElementById("lista-datos");
     while (nodo.firstChild) {
